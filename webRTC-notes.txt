@@ -1,0 +1,19 @@
+** WebRTC ** 
+
+-   Client to client video/file etc. transfer without the use of a server.
+
+-   Works on UDP-protocol (unlike http/websockets that rely on TCP protocol). 
+    UDP: fast, but not reliable | TCP: slow, but reliable
+
+-   In client-to-client communication, a client-machine doesn't know what is its public ip address. Without 
+    knowing what is its public ip address, it cannot cannot connect to another client in another network directly.
+    here comes the concept of TURN/ICE servers. Client sends a request to these server to get the info about the
+    public address they were assigned, ip-address form where the info came, etc.
+
+-   Drawback: p2p communication, 3rd person cannot enter. To over come this:
+    1.  Mesh Topology - We create a p2p connection to each of the clients creating n(n-1) 
+        total peer connections. (Not recommended due to scalablility issue)
+    2.  Selective Forwarding Unit (SFU) - We create a central-client on the server. Each client make connection
+        with that central client, send their video/files, the central-client combines the videos and presents
+        it to the user.
+
